@@ -6,9 +6,10 @@ import { join } from "node:path";
 
 const compress = async () => {
   const filePath = join(process.cwd(), 'files', 'fileToCompress.txt');
+  const resultPath = join(process.cwd(), 'files', 'archive.gz');
 
   const source = createReadStream(filePath);
-  const result = createWriteStream('archive.gz');
+  const result = createWriteStream(resultPath);
   const archive = createGzip();
 
   source.pipe(archive).pipe(result);
